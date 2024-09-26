@@ -9,4 +9,13 @@ public class MessageItem
     public bool IsMyMessage { get; set; }
 
     public List<MediaItem> Attachments { get; set; } = [];
+
+    private bool violatesBoundary = false;
+    public bool ViolatesBoundary
+    {
+        get { return violatesBoundary; }
+        private set {
+            violatesBoundary = value;
+        }
+    }
 }

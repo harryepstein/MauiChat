@@ -36,10 +36,29 @@
                 <Label Text="{Binding Body}"
                        TextColor="{StaticResource MessagesTextColor}"
                        Grid.Row="0"/>
+                
 
                 <FlexLayout BindableLayout.ItemsSource="{Binding Attachments}"
                             Grid.Row="1"
                             Style="{StaticResource FlexLayoutImageContainerStyle}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="m:MediaItem">
+                            <Image Source="{Binding Source}" Style="{StaticResource ImageSmallStyle}" />
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+            </Grid>
+            <Grid Grid.Row="2"
+      RowDefinitions="Auto,Auto"
+      RowSpacing="6">
+                <Label Text="{Binding ViolatesBoundary}"
+           TextColor="{StaticResource MessagesTextColor}"
+           Grid.Row="0"/>
+
+
+                <FlexLayout BindableLayout.ItemsSource="{Binding Attachments}"
+                Grid.Row="1"
+                Style="{StaticResource FlexLayoutImageContainerStyle}">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate x:DataType="m:MediaItem">
                             <Image Source="{Binding Source}" Style="{StaticResource ImageSmallStyle}" />

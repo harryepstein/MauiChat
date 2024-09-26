@@ -3,7 +3,7 @@
 public static class ChatService
 {
     public static IEnumerable<MessageItem> GetInitialMessages()
-	{
+    {
         return
         [
             new() {
@@ -17,7 +17,7 @@ public static class ChatService
                 IsMyMessage = false
             }
         ];
-	}
+    }
 
     public static MessageItem SendMessage(string messageBody, ObservableCollection<MediaItem> messageAttachments)
     {
@@ -32,8 +32,26 @@ public static class ChatService
         {
             message.Attachments.AddRange(messageAttachments);
         }
+        //i think it needs to actually store the message so that the other person can see it on their phone
+        //validate message to see if it violates a boundary
+        //get boundaryTopicList
+
+       // if (messageBody.Contains(string[] boundaryTopicList)
+
+        //if boundaryviolated = true, route response through chatgpt canned loopback chat response pattern
+
+            //else if boundary violated = true, pass message on to recipeient
 
         return message;
+    }
+
+    public static bool ContainsBoundaryTopic(MessageItem message, string boundaryTopic)
+    {
+        if (message.Body != null && message.Body.Contains(boundaryTopic))
+        {
+            return true;
+        }
+        return false;
     }
 
     public static MessageItem GetEchoMessage(MessageItem originalMessage)
@@ -45,5 +63,14 @@ public static class ChatService
             IsMyMessage = false,
             Attachments = originalMessage.Attachments
         };
+    }
+    //i need a method that calls chatgpt with a particular prompt that I will pass it
+    private static MessageItem GetGPTResponse(MessageItem originalMessage, BoundaryTopic topic)
+    {
+        //construct the call to chatgpt
+
+        //return the response
+
+        return new MessageItem();
     }
 }

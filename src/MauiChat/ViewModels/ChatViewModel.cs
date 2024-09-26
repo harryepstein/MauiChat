@@ -114,10 +114,10 @@ public partial class ChatViewModel : ObservableObject
             await Task.Delay(1000);
 
             // Get the echo message from the ChatService
-            var newEchoMessage = ChatService.GetEchoMessage(newMessage);
+            //var newEchoMessage = ChatService.GetEchoMessage(newMessage);
 
             // Add the echo message to the list of grouped messages
-            AddMessageToList(newEchoMessage);
+            //AddMessageToList(newEchoMessage);
 
             // Clear the message body after sending
             MessageBody = string.Empty;
